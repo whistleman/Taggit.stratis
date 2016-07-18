@@ -1,4 +1,4 @@
-PRIVATE ["_tagged","_tagger","_damage","_points","_score","_maxScore"];
+PRIVATE ["_tagged","_tagger","_damage","_points","_score","_maxScore", "_selname"];
 	
 _tagged  = _this select 0;
 _selname = _this select 1;
@@ -9,12 +9,12 @@ _tagged setdamage 0;
 
 _points = _damage * -100;
 if (WIS_SwitchINIT) exitwith {};
-if (isNull _tagger || _tagged == _tagger) exitwith {};
+if (_tagger != "init" ) then {IF (_tagged == _tagger || _tagger iskindof "Man") exitwith {};};
 
 WIS_SwitchINIT = true;
 publicVariable "WIS_SwitchINIT";
 
-if (_tagged == "init") then {
+if (_tagger == "init") then {
 	hint format ["Goodluck everyone! %1 is the first tagger", name _tagged];
 } else {
 	hint format ["%1 tagged %2!", name _tagger, name _tagged];
@@ -22,9 +22,11 @@ if (_tagged == "init") then {
 };
 
 // Take the gun from the Tagger
-if (player == _tagger and _tagger != "init") then {
-	clearMagazineCargoGlobal _tagger;
-	clearWeaponCargoGlobal _tagger;
+if (_tagger != "init") then {
+	if (player == _tagger) then {
+		clearMagazineCargoGlobal _tagger;
+		clearWeaponCargoGlobal _tagger;
+	};
 };
 
 // Give the tagged player a weapon and remove points from his score

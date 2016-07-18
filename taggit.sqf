@@ -8,6 +8,7 @@ _tagger
 Scoring system?
 Ammobox in the middle with ammo?
 Special abilities?
+Units outside of area get points substracted
 */
 
 

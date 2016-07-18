@@ -34,7 +34,7 @@ class Params
 	};
 	class WIS_Weapon
 	{
-		title 		= "";
+		title 		= "Weapon";
 		texts[] 	= {"ACP-C2 .45"  ,"Zubr .45 with sight"          ,"Vermin SMG .45 ACP","Sting 9 mm with sight","MXC 6.5 mm"    ,"MXM 6.5 mm with RCO sight","GM6 Lynx 12.7 mm" ,"RPG-42 Alamut"};
 		values[]	= {"hgun_ACPC2_F","hgun_Pistol_heavy_02_Yorris_F","SMG_01_F"          ,"SMG_02_ACO_F"         ,"arifle_MXC_F"  ,"arifle_MXM_Hamr_pointer_F","srifle_GM6_LRPS_F","launch_RPG32_F"};
 	};

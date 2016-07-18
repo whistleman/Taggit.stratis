@@ -1,3 +1,5 @@
+PRIVATE ["_tagger", "_points", "_score", "_maxScore"];
+
 _tagger = _this select 0;
 _points = _this select 1;
 
