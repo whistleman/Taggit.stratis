@@ -1,0 +1,1 @@
+ExecVM "Taggit-init.sqf";
