@@ -6,7 +6,7 @@ _points = [_this, 2, 0] call BIS_fnc_param;
 
 if (isNull _tagger) then {
 	hint format ["Goodluck everyone! %1 is the first tagger", name _tagged];
-	hint format ["%1 may choose a starting position on the map by alt-clicking on a position.", name _tagged];
+	hint format ["%1 may choose a starting position on the map by alt-clicking on a position on the map.", name _tagged];
 } else {
 	switch (_tagger) do {
 	
