@@ -26,8 +26,13 @@ while {alive _unit} do {
 		
 		if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 will receive %2 points", name _unit, _points];};
 		
-		// When player is inside he will receive _points every 30 seconds
-		[_unit, _points] call WIS_fnc_Handle_Score;
+		_tagged = _unit getVariable ["Tagged"];
+		
+		// Check if player is tagged. If tagged the player will not receive any points
+		if !(_tagged) then {
+			// When player is inside he will receive _points every 30 seconds
+			[_unit, _points] call WIS_fnc_Handle_Score;
+		};
 		
 		// Sleep for 30 seconds
 		sleep 30;

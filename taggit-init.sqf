@@ -1,9 +1,11 @@
 //Defines
-WIS_TagWeapon 			= "WIS_MaxScore" call BIS_fnc_getParamValue;
-_MagazineArray  = getArray (ConfigFile >> "CfgWeapons" >> WIS_TagWeapon >> "Magazines");
-WIS_TagMagazine = _MagazineArray select 0;
+WIS_TagWeapon 			= "WIS_MaxScore" 	call BIS_fnc_getParamValue;
+_MagazineArray  		= getArray (ConfigFile >> "CfgWeapons" >> WIS_TagWeapon >> "Magazines");
+WIS_TagMagazine 		= _MagazineArray select 0;
 WIS_Taggit_Debug 		= "WIS_TaggitDebug" call BIS_fnc_getParamValue;
-WIS_Taggit_AreaSize 	= "WIS_AreaSize" call BIS_fnc_getParamValue;
+WIS_Taggit_AreaSize 	= "WIS_AreaSize" 	call BIS_fnc_getParamValue;
+WIS_Taggit_Uniform		= "WIS_Uniform" 	call BIS_fnc_getParamvalue;
+WIS_Taggit_Vision		= "WIS_Vision" 		call BIS_fnc_getParamvalue;
 
 if (hasInterface) then {
 
@@ -11,6 +13,12 @@ if (hasInterface) then {
 	
 	// Does it have to be persistant?
 	_ehPlayerHit = player addEventhandler ["HandleDamage", {[[_this],"WIS_fnc_Switch", true, false] call BIS_FNC_MP;}];
+	
+	// Give unit a uniform (or not)
+	if (WIS_Taggit_Uniform != "NoChange") then {player forceAddUniform WIS_Taggit_Uniform;};
+	
+	// Give unit some Goggles
+	if (WIS_Taggit_Vision != "NoChange") then {player linkItem WIS_Taggit_Vision;};
 	
 };
 

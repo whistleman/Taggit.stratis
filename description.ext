@@ -43,18 +43,35 @@ class Params
 		title = "Size of area";
 		texts[] = {"100 Meters","250 Meters","500 Meters"};
 		values[] = {100,250,500};
+		default = 100;
 	};
 	class WIS_Weapon
 	{
 		title 		= "Weapon";
 		texts[] 	= {"ACP-C2 .45"  ,"Zubr .45 with sight"          ,"Vermin SMG .45 ACP","Sting 9 mm with sight","MXC 6.5 mm"    ,"MXM 6.5 mm with RCO sight","GM6 Lynx 12.7 mm" ,"RPG-42 Alamut"};
 		values[]	= {"hgun_ACPC2_F","hgun_Pistol_heavy_02_Yorris_F","SMG_01_F"          ,"SMG_02_ACO_F"         ,"arifle_MXC_F"  ,"arifle_MXM_Hamr_pointer_F","srifle_GM6_LRPS_F","launch_RPG32_F"};
+		default = "hgun_ACPC2_F";
 	};
 	class WIS_TaggitDebug
 	{
 		title = "Debug Off/On";
 		texts[] = {"Off", "On"};
 		values[] = {0,1};
+		default = 0;
+	};
+	class WIS_Uniform
+	{
+		title = "Uniform";
+		texts[] = {"Civilian","Ghillies", "Thermal blocking (Not implemented yet)"};
+		values[] = {"NoChange","U_B_GhillieSuit", ""};
+		default = "NoChange";
+	};
+	class WIS_Vision
+	{
+		title = "Goggles";
+		texts[] = {"None", "NVG's", "Thermal vision (Not implemented yet)"};
+		values[] = {"NoChange", "NVGoggles", ""};
+		default = "NoChange";
 	};
 };
 

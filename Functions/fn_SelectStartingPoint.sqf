@@ -49,8 +49,8 @@ if (_alt) then {
 	// Give them some time to run away
 	sleep 10;
 
-	// Give the tagged one a gun
-	[_tagged, "init", 0, "init"] call WIS_fnc_Switch;
+	// Give the tagged one a gun and give him a head start because he is "de lul"
+	[_tagged, "init", -0.50, "init"] call WIS_fnc_Switch;
 
 	// Start score loop
 	[[player, 10],"WIS_fnc_ScoreLoop", true, true, false] call BIS_fnc_MP;
