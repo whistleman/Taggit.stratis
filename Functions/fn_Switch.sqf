@@ -11,18 +11,17 @@ if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Switchar
 
 _points = _damage * -100;
 
+// Check if WIS_SwitchINIT variable exists, if it does not make it false.
+if (isNil "WIS_SwitchINIT") then {WIS_SwitchINIT = false; publicVariable "WIS_SwitchINIT";};
 // When switch is already happening
 if (WIS_SwitchINIT) exitwith {};
-
-// When Tagged person is already Tagged
-_isTagged = _tagged getVariable ["Tagged"];
 
 //Check if init
 if (_tagger != "init") then {
 	// Check if the tagged one is the tagger
 	// Check if the tagger is something else than a man
-	// Check if the tagged person is already tagged
-	IF (_tagged == _tagger || !(_tagger iskindof "Man") || _isTagged) exitwith {};
+	// Check if player is both tagger and tagged
+	IF (_tagged == _tagger || !(_tagger iskindof "Man") || (player == _tagged && player == _tagger)) exitwith {};
 };
 
 WIS_SwitchINIT = true;
@@ -66,7 +65,8 @@ if (player == _tagged && _isUnTagged) then {
 	// Remove points from his score
 	[player, _score] call WIS_fnc_Handle_Score;
 	
+	// Set WIS_SwitchINIT back to false by the tagged person and than broadcast it to all clients
+	WIS_SwitchINIT = false;
+	publicVariable "WIS_SwitchINIT";
 };	
 
-WIS_SwitchINIT = false;
-publicVariable "WIS_SwitchINIT";
