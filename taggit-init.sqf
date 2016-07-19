@@ -2,10 +2,6 @@
 
 // to do:
 /*
-Create zone?
-Randomly place players in zone
-_tagger 
-Scoring system?
 Ammobox in the middle with ammo?
 Special abilities?
 Units outside of area get points substracted
@@ -13,24 +9,41 @@ Units outside of area get points substracted
 
 WIS_TagWeapon 	= "WIS_MaxScore" call BIS_fnc_getParamValue;
 
-_MagazineArray = getArray (ConfigFile >> "CfgWeapons" >> WIS_TagWeapon >> "Magazines");
+_MagazineArray  = getArray (ConfigFile >> "CfgWeapons" >> WIS_TagWeapon >> "Magazines");
 WIS_TagMagazine = _MagazineArray select 0;
 
+WIS_Taggit_Debug = "WIS_TaggitDebug" call BIS_fnc_getParamValue;
+
+if (hasInterface) then {
+	
+	// Does it have to be persistant?
+	_ehPlayerHit = player addEventhandler ["HandleDamage", {[[_this],"WIS_fnc_Switch", true, false] call BIS_FNC_MP;}];
+	
+};
+
 If (isServer) then {
-// Randomly select the first Tagger
-_cntPlayableUnits = count Playableunits;
-_justPlayers = allPlayers - entities "HeadlessClient_F";
-_tagger = _justPlayers select floor random(_cntPlayableUnit - 1);
+	// Let the server randomly select the first Tagger
+	_cntPlayableUnits = count Playableunits;
+	_justPlayers = allPlayers - entities "HeadlessClient_F";
+	_tagged = _justPlayers select floor random(_cntPlayableUnit - 1);
+	
+	// Set all players except the first tagged player to "Untagged"
+	{_x setVariable ["Untagged", true, true];} foreach _justPlayers - _tagged;
+	
+	// Set the tagged player to "Tagged"
+	_tagged setVariable ["Tagged", true, true];
+	
+	//Give him the a map and let him click where he wants to play with the others
+	_tagged linkItem "ItemMap";
 
-[[_tagger, _justplayers, 0, "init"], "WIS_fnc_Switch", true, true] call BIS_fnc_MP;
+
+	[[_tagged],"WIS_fnc_showHint", true, false] call BIS_fnc_MP;
 };
 
-if (hasInterface) exitwith {
+_init_tagged = player getvariable ["Tagged"];
+if (_init_tagged) then {
 
-	// handle damage or hit??
-	//_ehPlayerHit = player addEventhandler ["Hit", {[[_this],"WIS_fnc_Switch", true,true] call BIS_FNC_MP;}];
-	
-	_ehPlayerHit = player addEventhandler ["HandleDamage", {[[_this],"WIS_fnc_Switch", true,true] call BIS_FNC_MP;}];
-	
-	[player, 10] spawn WIS_fnc_ScoreLoop;
+	//[key, event, code, arguments] call BIS_fnc_addStackedEventHandler; 
+	["WIS_onMapClick", "onMapSingleClick", {[ player, _this] spawn WIS_fnc_SelectStartingPoint}]  call BIS_fnc_addStackedEventHandler;
 };
+
