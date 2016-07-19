@@ -43,6 +43,7 @@ If (isServer) then {
 	
 	//Give him the a map and let him click where he wants to play with the others
 	_tagged linkItem "ItemMap";
+	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 has a map? %2", name _tagged, ("itemMap" in assignedItems _tagged)];};
 	
 	[[_tagged],"WIS_fnc_showHint", true, false] call BIS_fnc_MP;
 };
@@ -50,7 +51,7 @@ If (isServer) then {
 _init_tagged = player getvariable ["Tagged"];
 if (_init_tagged) then {
 	
-	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* init taggit succeeded: %1 ", _init_tagged];};
+	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* init taggit succeeded: %1. the player who is tagged is: %2", _init_tagged, name player];};
 	
 	//[key, event, code, arguments] call BIS_fnc_addStackedEventHandler; 
 	["WIS_onMapClick", "onMapSingleClick", {[ player, _this] spawn WIS_fnc_SelectStartingPoint}]  call BIS_fnc_addStackedEventHandler;
