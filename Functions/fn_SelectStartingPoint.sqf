@@ -1,4 +1,4 @@
-//placeholder
+PRIVATE ["_tagged", "_mapclickparams", "_magazine", "_box"];
 _tagged = _this select 0;
 _mapclickparams = _this select 1;
 
@@ -18,7 +18,7 @@ if (_alt) then {
 	["WIS_onMapClick", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
 	
 	// Place players 
-	{_x setpos _pos} foreach allPlayers;
+	{_x setposATL _pos} foreach allPlayers;
 	
 	// Create ammobox for mags
 	if (isServer) then {
@@ -33,6 +33,14 @@ if (_alt) then {
 		
 		// Add magazines of selected weapon
 		_box addMagazineCargoGlobal [_magazine, 999];
+		
+		// Create marker
+		WIS_mrk = createMarker ["Ammobox", _pos];
+		WIS_mrk setMarkerColor "ColorOrange";
+		WIS_mrk setMarkerShape "ELLIPSE";
+		WIS_mrk setMarkerSize [WIS_Taggit_AreaSize,WIS_Taggit_AreaSize];
+		WIS_mrk setMarkerAlpha 1;		
+		publicVariable "WIS_mrk";
 	};
 	
 	// Show a hint that the players have some time to run away
