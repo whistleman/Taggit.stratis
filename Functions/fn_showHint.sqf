@@ -1,10 +1,10 @@
 PRIVATE ["_tagged","_tagger", "_points"];
 
 _tagged = _this select 0;
-_tagger = [_this, 1, objNull] call BIS_fnc_param; 
+_tagger = [_this, 1, "start"] call BIS_fnc_param; 
 _points = [_this, 2, 0] call BIS_fnc_param; 
 
-if (isNull _tagger) then {
+if ( _tagger == "start") then {
 	systemchat format ["Goodluck everyone! %1 is the first tagger", name _tagged];
 	systemchat format ["%1 may choose a starting position on the map by alt-shift-clicking on a position on the map.", name _tagged];
 } else {
