@@ -5,7 +5,7 @@ _points = _this select 1;
 
 while {alive _unit} do {
 
-	_dist = _unit _distance (getMarkerPos WIS_mrk);
+	_dist = _unit distance (getMarkerPos WIS_mrk);
 	
 	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 is %2 meters away from WIS_mrk", name _unit, _dist];};
 	
@@ -26,7 +26,7 @@ while {alive _unit} do {
 		
 		if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 will receive %2 points", name _unit, _points];};
 		
-		_tagged = _unit getVariable ["Tagged"];
+		_tagged = _unit getVariable "Tagged";
 		
 		// Check if player is tagged. If tagged the player will not receive any points
 		if !(_tagged) then {

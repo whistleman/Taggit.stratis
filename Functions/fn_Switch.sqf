@@ -43,7 +43,7 @@ if (_tagger != "init" && player != _tagged) then {
 	};
 };
 
-_isUnTagged = _tagged getVariable ["Untagged"];
+_isUnTagged = _tagged getVariable "Untagged";
 
 // Check if player is tagged and if the player was untagged.
 if (player == _tagged && _isUnTagged) then {
