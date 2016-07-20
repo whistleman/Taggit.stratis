@@ -57,6 +57,6 @@ if (_init_tagged) then {
 	
 	//[key, event, code, arguments] call BIS_fnc_addStackedEventHandler; 
 	//["WIS_onMapClick", "onMapSingleClick", {[ player, _this] spawn WIS_fnc_SelectStartingPoint}]  call BIS_fnc_addStackedEventHandler;
-	player onMapSingleClick "[_this, [_pos,_units,_shift,_alt]] spawn WIS_fnc_SelectStartingPoint;";
+	player onMapSingleClick "[[_this, [_pos,_units,_shift,_alt]], 'WIS_fnc_SelectStartingPoint', true, true] call BIS_fnc_MP;";
 };
 
