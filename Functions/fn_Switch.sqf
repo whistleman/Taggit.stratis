@@ -63,7 +63,7 @@ if (player == _tagged && _isUnTagged) then {
 		diag_log format ["*-* DEBUG TAGGIT *-* Magazine: %1", WIS_TagWeapon];
 	};
 	// Remove points from his score
-	[player, _score] call WIS_fnc_Handle_Score;
+	[player, _points] call WIS_fnc_Handle_Score;
 	
 	// Set WIS_SwitchINIT back to false by the tagged person and than broadcast it to all clients
 	WIS_SwitchINIT = false;
