@@ -52,6 +52,8 @@ if (_alt && _shift) then {
 	// Give them some time to run away
 	sleep 10;
 
+        If (isServer) then {_box addItemCargoGlobal ["itemmap", 10];};
+
 	// Give the tagged one a gun and give him a head start because he is "de lul"
 	[_tagged, "init", -0.50, "init"] call WIS_fnc_Switch;
 
