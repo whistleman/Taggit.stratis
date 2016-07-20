@@ -18,7 +18,7 @@ if (hasInterface) then {
 	if (WIS_Taggit_Uniform != "NoChange") then {player forceAddUniform WIS_Taggit_Uniform;};
 	
 	// Give unit some Goggles
-	if (WIS_Taggit_Vision != "NoChange") then {player linkItem WIS_Taggit_Vision;};
+	if (WIS_Taggit_Vision != "NoChange") then {if (WIS_Taggit_Vision != "H_HelmetSpecO_ghex_F") then {player linkItem WIS_Taggit_Vision;} else {player addHeadgear WIS_Taggit_Vision};
 	
 };
 
