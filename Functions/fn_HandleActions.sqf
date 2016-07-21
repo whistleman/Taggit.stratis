@@ -22,4 +22,11 @@ switch (_fnc) do {
 	
 	};
 
+	case "WIS_fnc_Ability_Blackout":	{
+	
+		WIS_Blackout = WIS_Blackout + 1;
+		PublicVariable "WIS_Blackout";
+	
+	};	
+	
 };
