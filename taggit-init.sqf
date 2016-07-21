@@ -55,8 +55,6 @@ if (_init_tagged) then {
 	
 	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* init taggit succeeded: %1. the player who is tagged is: %2", _init_tagged, name player];};
 	
-	//[key, event, code, arguments] call BIS_fnc_addStackedEventHandler; 
-	//["WIS_onMapClick", "onMapSingleClick", {[ player, _this] spawn WIS_fnc_SelectStartingPoint}]  call BIS_fnc_addStackedEventHandler;
-	player onMapSingleClick "[[_this, [_pos,_units,_shift,_alt]], 'WIS_fnc_SelectStartingPoint', true, true] call BIS_fnc_MP;";
+	player onMapSingleClick "[[_this, [_pos,_units,_shift,_alt]], 'WIS_fnc_SelectStartingPoint', true, true, false] call BIS_fnc_MP;";
 };
 

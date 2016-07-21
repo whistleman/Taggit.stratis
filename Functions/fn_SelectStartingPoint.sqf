@@ -10,8 +10,6 @@ _pos   = _mapclickparams select 0;
 _shift = _mapclickparams select 2;
 _alt   = _mapclickparams select 3;
 
-onMapSingleClick "";
-
 if (_alt && _shift) then {
 	// Remove map
 	_tagged unassignItem "itemmap";
@@ -19,6 +17,7 @@ if (_alt && _shift) then {
 
 	// Remove Stacked EH
 	//["WIS_onMapClick", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
+	onMapSingleClick "";
 	
 	// Place players 
 	{_x setposATL _pos} foreach allPlayers;
