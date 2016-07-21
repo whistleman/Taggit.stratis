@@ -5,11 +5,11 @@ if !(player == _tagged || WIS_Ability) exitwith {if (WIS_Ability) then {systemch
 WIS_Ability = true;
 publicVariable "WIS_Ability";
 
-_tagged disablesimulation true;
+_tagged enablesimulation false;
 
 sleep 5;
 
-_tagged disablesimulation false;
+_tagged enablesimulation true;
 
 WIS_Ability = false;
 publicVariable "WIS_Ability";

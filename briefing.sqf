@@ -1,6 +1,6 @@
 // briefing.sqf
 
-player createDiaryRecord ["Diary", ["Rules", "<font color="FF8C00" size="14">Have you every played tag?<font />
+player createDiaryRecord ["Diary", ["Rules", "<font color='#FF8C00'>ave you every played tag?</font>
 <br /><br />
 How to play:<br />
 To begin the game, a randomly selected player is 'it'. He may choose a position by opening his map and shift-alt-clicking on a position. As soon as he has done that every player that is connected will be placed in that area.

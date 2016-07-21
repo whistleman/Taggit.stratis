@@ -8,9 +8,10 @@ WIS_Ability	= true;
 [] call WIS_fnc_CreatePubVarEH;
 
 {
+	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Action added: %1", _x];};
 	_acttext = _x select 0;
 	_actfnc  = _x select 1;
-	_act 	 = _box addaction [_acttext, "WIS_fnc_Handle_Actions",[_actfnc]];
+	_act 	 = _box addaction [_acttext, "WIS_fnc_HandleActions",[_actfnc]];
 } foreach _actions;
 
  
