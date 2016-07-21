@@ -28,6 +28,8 @@ if (_alt && _shift) then {
 		_box 		= "Box_NATO_Wps_F" createvehicle [(_pos select 0) + 2, (_pos select 1) + 2, _pos select 2];
 		_box allowDamage false;
 		
+		
+		
 		// Clear cargo in box
 		clearWeaponCargoGlobal _box;
 		clearMagazineCargoGlobal _box;
@@ -51,7 +53,13 @@ if (_alt && _shift) then {
 	// Give them some time to run away
 	sleep 10;
 
-        If (isServer) then {_box addItemCargoGlobal ["itemmap", 10];};
+        If (isServer) then {
+			_box addItemCargoGlobal ["itemmap", 10];
+			WIS_box = _box;
+			publicVariable "WIS_box";
+		};
+		
+	[WIS_box] call WIS_fnc_AddActions;
 
 	// Give the tagged one a gun and give him a head start because he is "de lul"
 	[_tagged, "init", -0.50, "init"] call WIS_fnc_Switch;
