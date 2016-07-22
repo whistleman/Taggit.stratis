@@ -46,7 +46,7 @@ if (_tagger != "init" && player != _tagged) then {
 _isUnTagged = _tagged getVariable "Untagged";
 
 // Check if player is tagged and if the player was untagged.
-if (player == _tagged && _isUnTagged) then {
+if (player == _tagged && !_isUnTagged) then {
 	
 	// Set variable untagged to false and tagged to true.
 	_tagged setVariable ["Untagged", false, true];

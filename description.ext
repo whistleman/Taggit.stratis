@@ -1,10 +1,8 @@
 onLoadMission = "Taggit";
 onLoadIntro = "Have you ever played tag? Well, not like this."
-LoadScreen = "tag.png";
 author = "Whistle";
 overviewText = "Have you ever played tag? Well, not like this.";
 
-disableChannels[] = {0,1,2,3,4,5,6};
 enableItemsDropping = 0;
 saving = 0;
 showGroupIndicator = 0;

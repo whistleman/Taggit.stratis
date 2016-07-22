@@ -25,10 +25,9 @@ if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Passed t
 
 If (isServer) then {
 	// Let the server randomly select the first Tagger
-	_justPlayers 		= allPlayers - entities "HeadlessClient_F";
+	_justPlayers 		= call BIS_fnc_listPlayers;
 	_cntPlayableUnits = count _justPlayers;
 	_tagged 			= _justPlayers call BIS_fnc_selectRandom;
-	
 	
 	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 players", _cntPlayableUnits];};
 	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 is randomly selected.", name _tagged];};
@@ -52,7 +51,8 @@ If (isServer) then {
 	[[_tagged],"WIS_fnc_showHint", true, false] call BIS_fnc_MP;
 };
 
-_init_tagged = player getvariable "Tagged";
+_init_tagged = player getvariable ["Tagged", false];
+if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Init_tagged: %1", _init_tagged];};
 if (_init_tagged) then {
 	
 	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* init taggit succeeded: %1. the player who is tagged is: %2", _init_tagged, name player];};
