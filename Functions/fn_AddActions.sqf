@@ -20,6 +20,7 @@ Note to self:
 When adding new abilities do following:
 -add new ability to array _actions.
 -add new publicvariable and publicvariableeventhandler 
+-add public variable to debug
 -add the function to functions.hpp
 -add to the switch in fn_HandleActions.sqf
 */

@@ -1,12 +1,12 @@
 PRIVATE ["_tagged", "_mapclickparams", "_magazine", "_box"];
-_tagged = _this select 0;
+_tagged 		= _this select 0;
 _mapclickparams = _this select 1;
 
 if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Array coming out of Mapclick %1", _this];};
 if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Mapclickparams: %1", _mapclickparams];};
 
-//_units = _mapclickparams select 1;
 _pos   = _mapclickparams select 0;
+//_units = _mapclickparams select 1;
 _shift = _mapclickparams select 2;
 _alt   = _mapclickparams select 3;
 
@@ -15,8 +15,7 @@ if (_alt && _shift) then {
 	_tagged unassignItem "itemmap";
 	_tagged removeItem "itemmap"; 
 
-	// Remove Stacked EH
-	//["WIS_onMapClick", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
+	// Remove onMapSingleClick
 	onMapSingleClick "";
 	
 	// Place players 
@@ -27,8 +26,6 @@ if (_alt && _shift) then {
 		_magazine 	= WIS_TagMagazine;
 		_box 		= "Box_NATO_Wps_F" createvehicle [(_pos select 0) + 2, (_pos select 1) + 2, _pos select 2];
 		_box allowDamage false;
-		
-		
 		
 		// Clear cargo in box
 		clearWeaponCargoGlobal _box;

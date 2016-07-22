@@ -40,3 +40,6 @@ switch (_fnc) do {
 	};	
 	
 };
+
+	//If these do not work then:
+	//[[],_fnc,true,true,false] call BIS_fnc_MP;

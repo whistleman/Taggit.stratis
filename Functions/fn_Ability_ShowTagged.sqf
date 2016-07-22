@@ -2,6 +2,8 @@
 _tagged = player getvariable "tagged";
 if !(player == _tagged || WIS_Ability) exitwith {if (WIS_Ability) then {systemchat "There is already an ability active";};};
 
+if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Show position: %1 player: %2", _tagged, name player];};
+
 WIS_Ability = false; 
 publicVariable "WIS_Ability";
 

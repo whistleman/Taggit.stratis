@@ -36,10 +36,12 @@ If (isServer) then {
 	// Set all players except the first tagged player to "Untagged"
 	{
 		_x setVariable ["Untagged", true, true];
+		_x setVariable ["Tagged", false, true];
 		if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 is setvariable Untagged.", name _x];};
 	} foreach _justPlayers;
 	
 	// Set the tagged player to "Tagged"
+	_tagged setVariable ["Untagged", false, true];
 	_tagged setVariable ["Tagged", true, true];
 	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 is setvariable Tagged.", name _tagged];};
 	
