@@ -62,8 +62,8 @@ class ScenarioData
 	showHUD=0;
 	showWatch=0;
 	saving=0;
-	disabledAI=1;
 	joinUnassigned=0;
+	respawn=2;
 	class Header
 	{
 		gameType="Sandbox";
@@ -103,7 +103,7 @@ class CustomAttributes
 										"STRING"
 									};
 								};
-								value="None";
+								value="Counter";
 							};
 						};
 					};

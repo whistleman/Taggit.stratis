@@ -7,7 +7,7 @@ _selname = _this select 1;
 _damage  = _this select 2;
 _tagger  = _this select 3;
 
-if !(_selname == "") exitwith {};
+//if !(_selname == "") exitwith {};
 
 _tagged setdamage 0;
 
