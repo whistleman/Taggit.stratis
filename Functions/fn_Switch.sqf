@@ -1,4 +1,6 @@
 PRIVATE ["_tagged","_tagger","_damage","_points","_score","_maxScore", "_selname"];
+
+if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Switcharray: %1", _this];};
 	
 _tagged  = _this select 0;
 _selname = _this select 1;
@@ -6,8 +8,6 @@ _damage  = _this select 2;
 _tagger  = _this select 3;
 
 _tagged setdamage 0;
-
-if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Switcharray: %1", _this];};
 
 _points = _damage * -100;
 
