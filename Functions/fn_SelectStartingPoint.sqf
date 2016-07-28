@@ -47,6 +47,8 @@ if (_alt && _shift) then {
 	// Show a hint that the players have some time to run away
 	[[player, "run", 0], "WIS_fnc_showHint", true, false] call BIS_fnc_MP;
 	
+	if (isNil "WIS_box_init" ) then {WIS_box_init = false};
+	
 	// Give them some time to run away
 	sleep 10;
 
@@ -54,8 +56,17 @@ if (_alt && _shift) then {
 			_box addItemCargoGlobal ["itemmap", 10];
 			WIS_box = _box;
 			publicVariable "WIS_box";
+			
+			if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* WIS_box pubvarred by server"];};
+			
+			WIS_box_init = true;
+			publicVariable "WIS_box_init";
 		};
-		
+	
+	waituntil {WIS_box_init};
+	
+	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* WIS_box pubvar received by %1", name player];};
+	
 	[WIS_box] call WIS_fnc_AddActions;
 
 	// Give the tagged one a gun and give him a head start because he is "de lul"

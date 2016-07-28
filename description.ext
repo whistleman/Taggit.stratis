@@ -1,5 +1,5 @@
 onLoadMission = "Taggit";
-onLoadIntro = "Have you ever played tag? Well, not like this."
+onLoadIntro = "Have you ever played tag? Well, not like this.";
 author = "Whistle";
 overviewText = "Have you ever played tag? Well, not like this.";
 
