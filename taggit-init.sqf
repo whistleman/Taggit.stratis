@@ -13,7 +13,7 @@ WIS_Taggit_Vision		= _visionarray select ("WIS_Vision" call BIS_fnc_getParamvalu
 if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 hasInterface", name player];};
 
 // Does it have to be persistant?
-_ehPlayerHit = player addEventhandler ["HandleDamage", {[[_this],"WIS_fnc_Switch", true, false] call BIS_FNC_MP;}];
+_ehPlayerHit = player addEventhandler ["HandleDamage", {[_this] spawn "WIS_fnc_Switch";}];
 
 // Give unit a uniform (or not)
 if (WIS_Taggit_Uniform != "NoChange") then {player forceAddUniform WIS_Taggit_Uniform;};
@@ -28,35 +28,34 @@ If (isServer) then {
 	_justPlayers 		= call BIS_fnc_listPlayers;
 	_cntPlayableUnits = count _justPlayers;
 	_tagged 			= _justPlayers call BIS_fnc_selectRandom;
-	
+
 	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 players", _cntPlayableUnits];};
 	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 is randomly selected.", name _tagged];};
-	
+
 	// Set all players except the first tagged player to "Untagged"
 	{
 		_x setVariable ["Untagged", true, true];
 		_x setVariable ["Tagged", false, true];
 		if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 is setvariable Untagged.", name _x];};
 	} foreach _justPlayers;
-	
+
 	// Set the tagged player to "Tagged"
 	_tagged setVariable ["Untagged", false, true];
 	_tagged setVariable ["Tagged", true, true];
 	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 is setvariable Tagged.", name _tagged];};
-	
+
 	//Give him the a map and let him click where he wants to play with the others
 	_tagged linkItem "ItemMap";
 	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 has a map? %2", name _tagged, ("itemMap" in assignedItems _tagged)];};
-	
+
 	[[_tagged],"WIS_fnc_showHint", true, false] call BIS_fnc_MP;
 };
 
 _init_tagged = player getvariable ["Tagged", false];
 if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Init_tagged: %1", _init_tagged];};
 if (_init_tagged) then {
-	
+
 	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* init taggit succeeded: %1. the player who is tagged is: %2", _init_tagged, name player];};
-	
+
 	player onMapSingleClick "[[_this, [_pos,_units,_shift,_alt]], 'WIS_fnc_SelectStartingPoint', true, true, false] call BIS_fnc_MP;";
 };
-
