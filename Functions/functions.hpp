@@ -7,6 +7,8 @@ class WIS
 		class Switch {file = "functions\fn_Switch.sqf";};
 		class showHint {file = "functions\fn_showHint.sqf";};
 		class SelectStartingPoint {file = "functions\fn_selectStartingPoint.sqf";};
+		class setState {file = "functions\fn_setState.sqf";};
+		class CreatePubVarEH {file = "functions\fn_CreatePubVarEH.sqf";};
 	};
 	class Abilities
 	{
@@ -15,6 +17,10 @@ class WIS
 		class Ability_Blackout {file = "functions\fn_Ability_Blackout.sqf";};
 		class AddActions {file = "functions\fn_AddActions.sqf";};
 		class HandleActions {file = "functions\fn_HandleActions.sqf";};
-		class CreatePubVarEH {file = "functions\fn_CreatePubVarEH.sqf";};
+	};
+	class Debug
+	{
+		class Debug {file="functions\fn_Debug.sqf";};
+		class DebugServer {file="functions\fn_DebugServer.sqf";};
 	};
 };

@@ -7,11 +7,11 @@ while {alive _unit} do {
 
 	_dist = _unit distance (getMarkerPos WIS_mrk);
 
-	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 is %2 meters away from WIS_mrk", name _unit, _dist];};
+	[format ["%1 is %2 meters away from WIS_mrk", name _unit, _dist]] call WIS_fnc_Debug;
 
 	if (_dist > WIS_Taggit_AreaSize) then {
 
-		if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 will receive %2 points as penalty", name _unit, (_points * -1)];};
+		[format ["%1 will receive %2 points as penalty", name _unit, (_points * -1)]] call WIS_fnc_Debug;
 
 		// When player is outside the marked area, he will receive a penalty of _points per 5 seconds
 		[_unit, (_points * -1)] call WIS_fnc_Handle_Score;
@@ -29,7 +29,7 @@ while {alive _unit} do {
 		// Check if player is tagged. If tagged the player will not receive any points
 		if !(_tagged) then {
 
-			if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* %1 will receive %2 points", name _unit, _points];};
+			[format ["%1 will receive %2 points", name _unit, _points]] call WIS_fnc_Debug;
 			// When player is inside he will receive _points every 30 seconds
 			[_unit, _points] call WIS_fnc_Handle_Score;
 		};

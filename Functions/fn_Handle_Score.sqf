@@ -1,18 +1,18 @@
-PRIVATE ["_tagger", "_points", "_score", "_maxScore"];
+PRIVATE ["_unit", "_points", "_score", "_maxScore"];
 
-_tagger = _this select 0;
+_unit = _this select 0;
 _points = _this select 1;
 
-if (WIS_Taggit_Debug == 1) then {
-	diag_log format ["*-* DEBUG TAGGIT *-* Add %1 new points to %2", _points, name _tagger];
-	diag_log format ["*-* DEBUG TAGGIT *-* Score of %1 before addScore: %2", name _tagger, score _tagger];
-};
 
-_tagger addScore _points;
+[format ["Add %1 new points to %2", _points, name _unit]] call WIS_fnc_Debug;
+[format ["*Score of %1 before addScore: %2", name _unit, score _unit]] call WIS_fnc_Debug;
 
-_score = score _tagger;
 
-if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Score of %1 after addScore: %2", name _tagger, _score];};
+_unit addScore _points;
+
+_score = score _unit;
+
+[format ["Score of %1 after addScore: %2", name _unit, _score]] call WIS_fnc_Debug;
 
 _maxScore = "WIS_MaxScore" call BIS_fnc_getParamValue;
 if !(isServer) then {

@@ -2,8 +2,8 @@ PRIVATE ["_tagged", "_mapclickparams", "_magazine", "_box"];
 _tagged 		= _this select 0;
 _mapclickparams = _this select 1;
 
-if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Array coming out of Mapclick %1", _this];};
-if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* Mapclickparams: %1", _mapclickparams];};
+[format ["Array coming out of Mapclick %1", _this]] call WIS_fnc_Debug;
+[format ["Mapclickparams: %1", _mapclickparams]] call WIS_fnc_Debug;
 
 _pos   = _mapclickparams select 0;
 //_units = _mapclickparams select 1;
@@ -19,11 +19,8 @@ if (_alt && _shift) then {
 	// Remove onMapSingleClick
 	onMapSingleClick "";
 
-	// Place players
-	{_x setposATL _pos} foreach allPlayers;
-
-	// Create ammobox for mags
 	if (isServer) then {
+		// Create ammobox for mags
 		_magazine 	= WIS_TagMagazine;
 		_box 		= "Box_NATO_Wps_F" createvehicle [(_pos select 0) + 2, (_pos select 1) + 2, _pos select 2];
 		_box allowDamage false;
@@ -40,6 +37,9 @@ if (_alt && _shift) then {
 		WIS_mrk setMarkerSize [WIS_Taggit_AreaSize,WIS_Taggit_AreaSize];
 		WIS_mrk setMarkerAlpha 1;
 		publicVariable "WIS_mrk";
+		
+		// Set players to pos
+		{_x setposATL _pos} foreach allPlayers;
 	};
 
 	// Show a hint that the players have some time to run away
@@ -58,7 +58,7 @@ if (_alt && _shift) then {
 			WIS_box = _box;
 			publicVariable "WIS_box";
 
-			if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* WIS_box pubvarred by server"];};
+			[format ["WIS_box pubvarred by server"]] call WIS_fnc_Debug;
 
 			WIS_box_init = true;
 			publicVariable "WIS_box_init";
@@ -66,7 +66,7 @@ if (_alt && _shift) then {
 
 	waituntil {WIS_box_init};
 
-	if (WIS_Taggit_Debug == 1) then {diag_log format ["*-* DEBUG TAGGIT *-* WIS_box pubvar received by %1", name player];};
+	[format ["WIS_box pubvar received by %1", name player]] call WIS_fnc_Debug;
 
 	[WIS_box] call WIS_fnc_AddActions;
 
@@ -74,8 +74,9 @@ if (_alt && _shift) then {
 	[_tagged, "init", -0.50, "init"] call WIS_fnc_Switch;
 
 	// Start score loop
-	[[player, 10],"WIS_fnc_ScoreLoop", true, true, false] call BIS_fnc_MP;
-
+	if (isServer) then {
+		[_x, 10] remoteExec ["WIS_fnc_ScoreLoop",2,true];
+	} forEach allPlayers;
 
 } else {
 
