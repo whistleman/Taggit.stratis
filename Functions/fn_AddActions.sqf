@@ -11,15 +11,15 @@ WIS_Ability	= true;
 	[format ["Action added: %1", _x]] call WIS_fnc_Debug;
 	_acttext = _x select 0;
 	_actfnc  = _x select 1;
-	_act 	 = _box addaction [_acttext, "WIS_fnc_HandleActions",[_actfnc]];
+	_act 	 = _box addaction [_acttext, "functions\fn_HandleActions.sqf",[_actfnc]];
 } foreach _actions;
 
- 
+
 /*
 Note to self:
 When adding new abilities do following:
 -add new ability to array _actions.
--add new publicvariable and publicvariableeventhandler 
+-add new publicvariable and publicvariableeventhandler
 -add public variable to debug
 -add the function to functions.hpp
 -add to the switch in fn_HandleActions.sqf

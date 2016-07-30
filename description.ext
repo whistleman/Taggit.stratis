@@ -8,7 +8,7 @@ saving = 0;
 showGroupIndicator = 0;
 
 class CfgDebriefing
-{  
+{
 	class PlayerScore
 	{
 		title = "Good job running away everytime!";
@@ -16,14 +16,14 @@ class CfgDebriefing
 	};
 };
 
-class Params 
+class Params
 {
 	class WIS_MaxScore
 	{
 		title = "Maximum Score";
 		values[] = {300,600,1000};
 		texts[] = {"300 points","600 points","1000 points"};
-		default = 300; 
+		default = 300;
 		isGlobal = 1;
 	};
 	class Daytime
@@ -54,7 +54,7 @@ class Params
 		title = "Debug Off/On";
 		texts[] = {"Off", "On"};
 		values[] = {0,1};
-		default = 1;
+		default = 0;
 	};
 	class WIS_Uniform
 	{
@@ -72,7 +72,7 @@ class Params
 	};
 };
 
-class CfgFunctions 
+class CfgFunctions
 {
 	#include "functions\Functions.hpp"
 };

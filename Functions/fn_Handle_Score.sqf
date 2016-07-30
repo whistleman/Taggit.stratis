@@ -15,8 +15,8 @@ _score = score _unit;
 [format ["Score of %1 after addScore: %2", name _unit, _score]] call WIS_fnc_Debug;
 
 _maxScore = "WIS_MaxScore" call BIS_fnc_getParamValue;
-if !(isServer) then {
-	if (_score > _maxScore) exitwith {
+if (isServer) then {
+	if (_score > (_maxScore - 1)) exitwith {
 		"PlayerScore" call BIS_fnc_endMissionServer;
 	};
 };
