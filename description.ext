@@ -45,8 +45,8 @@ class Params
 	class WIS_Weapon
 	{
 		title 		= "Weapon";
-		texts[] 	= {"ACP-C2 .45"  ,"Zubr .45 with sight"          ,"Vermin SMG .45 ACP","Sting 9 mm with sight","MXC 6.5 mm"    ,"MXM 6.5 mm with RCO sight","GM6 Lynx 12.7 mm" ,"RPG-42 Alamut"};
-		values[]	= {0,1,2,3,4,5,6,7};
+		texts[] 	= {"ACP-C2 .45"  ,"Zubr .45 with sight"          ,"Vermin SMG .45 ACP","Sting 9 mm with sight","MXC 6.5 mm"    ,"MXM 6.5 mm with RCO sight","GM6 Lynx 12.7 mm"};
+		values[]	= {0,1,2,3,4,5,6};
 		default = 0;
 	};
 	class WIS_TaggitDebug

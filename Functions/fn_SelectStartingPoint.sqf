@@ -10,7 +10,7 @@ _pos   = _mapclickparams select 0;
 _shift = _mapclickparams select 2;
 _alt   = _mapclickparams select 3;
 
-if (_alt && _shift) then {
+if (_shift) then {
 	// Remove map
 	_tagged unassignItem "itemmap";
 	_tagged removeItem "itemmap";

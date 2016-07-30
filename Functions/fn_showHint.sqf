@@ -10,11 +10,11 @@ if (typename _tagger == "STRING") then {
 
 		CASE "start": {
 			systemchat format ["Goodluck everyone! %1 is the first tagger", name _tagged];
-			systemchat format ["%1 may choose a starting position on the map by alt-shift-clicking on a position on the map.", name _tagged];
+			systemchat format ["%1 may choose a starting position on the map by shift-clicking on a position on the map.", name _tagged];
 		};
 
 		case "wrongclick":	{
-			if (player == _tagged) then {systemchat format ["%1, you did not use alt-shift-click!", _tagged];};
+			if (player == _tagged) then {systemchat format ["%1, you did not use shift-click!", _tagged];};
 		};
 
 		case "run":			{

@@ -8,14 +8,14 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=18;
+		nextID=20;
 	};
 	class Camera
 	{
-		pos[]={2182.8884,24.798454,5776.1533};
-		dir[]={-0.40352991,-0.69537669,-0.59466344};
-		up[]={-0.390459,0.71864861,-0.57540208};
-		aside[]={-0.82747394,-1.2567034e-007,0.56151199};
+		pos[]={2216.1648,37.316452,5769.4463};
+		dir[]={-0.7477358,-0.64264935,-0.16707157};
+		up[]={-0.62718219,0.76616234,-0.14013581};
+		aside[]={-0.21806195,-4.4834451e-007,0.9759447};
 	};
 };
 binarizationWanted=0;
@@ -62,11 +62,14 @@ class ScenarioData
 	showHUD=0;
 	showWatch=0;
 	saving=0;
+	aIKills=1;
+	disabledAI=1;
 	joinUnassigned=0;
-	respawn=2;
 	class Header
 	{
 		gameType="Sandbox";
+		minPlayers=2;
+		maxPlayers=8;
 	};
 };
 class CustomAttributes
@@ -87,24 +90,6 @@ class CustomAttributes
 						type[]=
 						{
 							"ARRAY"
-						};
-					};
-					class value
-					{
-						items=1;
-						class Item0
-						{
-							class data
-							{
-								class type
-								{
-									type[]=
-									{
-										"STRING"
-									};
-								};
-								value="Counter";
-							};
 						};
 					};
 				};
@@ -350,6 +335,7 @@ class Mission
 {
 	class Intel
 	{
+		overviewText="Have you ever played ""Tag""? Well, not like this!";
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
 		startWind=0.1;

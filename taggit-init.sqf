@@ -1,5 +1,5 @@
 //Defines
-_weaponsarray 		= ["hgun_ACPC2_F","hgun_Pistol_heavy_02_Yorris_F","SMG_01_F","SMG_02_ACO_F","arifle_MXC_F","arifle_MXM_Hamr_pointer_F","srifle_GM6_LRPS_F","launch_RPG32_F"];
+_weaponsarray 		= ["hgun_ACPC2_F","hgun_Pistol_heavy_02_Yorris_F","SMG_01_F","SMG_02_ACO_F","arifle_MXC_F","arifle_MXM_Hamr_pointer_F","srifle_GM6_LRPS_F"];
 WIS_TagWeapon 		= _weaponsarray select ("WIS_Weapon" call BIS_fnc_getParamValue);
 _MagazineArray  	= getArray (ConfigFile >> "CfgWeapons" >> WIS_TagWeapon >> "Magazines");
 WIS_TagMagazine 	= _MagazineArray select 0;
@@ -7,7 +7,7 @@ WIS_Taggit_Debug 	= "WIS_TaggitDebug" call BIS_fnc_getParamValue;
 WIS_Taggit_AreaSize = "WIS_AreaSize" call BIS_fnc_getParamValue;
 _uniformarray 		= ["NoChange","U_B_GhillieSuit", "U_O_V_Soldier_Viper_F"];
 WIS_Taggit_Uniform	= _uniformarray select ("WIS_Uniform" call BIS_fnc_getParamvalue);
-_visionarray 		= ["NoChange", "NVGoggles", "H_HelmetSpecO_ghex_F"];
+_visionarray 		= ["NoChange", "NVGoggles", "H_HelmetO_ViperSP_ghex_F"];
 WIS_Taggit_Vision	= _visionarray select ("WIS_Vision" call BIS_fnc_getParamvalue);
 
 [ format ["%1 hasInterface", name player]] call WIS_fnc_debug;
