@@ -12,8 +12,11 @@ WIS_Taggit_Vision	= _visionarray select ("WIS_Vision" call BIS_fnc_getParamvalue
 
 [ format ["%1 hasInterface", name player]] call WIS_fnc_debug;
 
-_ehPlayerHitNoDomage	= player addEventhandler ["HandleDamage", {0}];
-_ehPlayerHit 			= player addEventhandler ["HandleDamage", {_this spawn "WIS_fnc_Switch";}];
+{
+	_ehPlayerHitNoDomage	= _x addEventhandler ["HandleDamage", {0}];
+	_ehPlayerHit 					= _x addEventhandler ["HandleDamage", {_this spawn WIS_fnc_Switch;}];
+	_ehPlayerFired				= _x addEventhandler ["Fired", {(_this select 0) setVehicleAmmo 1;}];
+} foreach allunits;
 
 // Give unit a uniform (or not)
 if (WIS_Taggit_Uniform != "NoChange") then {player forceAddUniform WIS_Taggit_Uniform;};
@@ -22,6 +25,8 @@ if (WIS_Taggit_Uniform != "NoChange") then {player forceAddUniform WIS_Taggit_Un
 if (WIS_Taggit_Vision != "NoChange") then {if (WIS_Taggit_Vision != "H_HelmetSpecO_ghex_F") then {player linkItem WIS_Taggit_Vision;} else {player addHeadgear WIS_Taggit_Vision}};
 
 [ format ["Passed through EH and Uniform + Vision"]] call WIS_fnc_debug;
+
+WIS_chosen_tagged = false;
 
 If (isServer) then {
 	// Let the server randomly select the first Tagger
@@ -37,23 +42,27 @@ If (isServer) then {
 		_x setVariable ["Untagged", true, true];
 		_x setVariable ["Tagged", false, true];
 		[format ["%1 is setvariable Untagged.", name _x]] call WIS_fnc_debug;
-	} foreach _justPlayers;
+	} foreach allUnits;
 
 	// Set the tagged player to "Tagged"
 	_tagged setVariable ["Untagged", false, true];
 	_tagged setVariable ["Tagged", true, true];
-	[format ["%1 is setvariable Tagged."] call WIS_fnc_debug;
+	[format ["%1 is setvariable Tagged."]] call WIS_fnc_debug;
 
 	//Give him the a map and let him click where he wants to play with the others
 	_tagged linkItem "ItemMap";
 	[format ["%1 has a map? %2", name _tagged, ("itemMap" in assignedItems _tagged)]] call WIS_fnc_debug;
 
 	[[_tagged],"WIS_fnc_showHint", true, false] call BIS_fnc_MP;
+
+	WIS_chosen_tagged = true;
+	publicVariable "WIS_chosen_tagged";
 };
 
+waituntil {WIS_chosen_tagged};
 _init_tagged = player getvariable "Tagged";
 [format ["Init_tagged: %1", _init_tagged]] call WIS_fnc_debug;
-if (_init_tagged && isPlayer) then {
+if (_init_tagged) then {
 
 	[format ["Init taggit succeeded: %1. The player who is tagged is: %2", _init_tagged, name player]] call WIS_fnc_debug;
 

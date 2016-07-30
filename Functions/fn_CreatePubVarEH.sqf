@@ -17,7 +17,7 @@ PublicVariable "WIS_EhDebug";
 
 WIS_SetState = [];
 PublicVariable "WIS_SetState";
-"WIS_SetState" addPublicVariableEventHandler {[_this select 1] spawn WIS_fnc_SetState};
+"WIS_SetState" addPublicVariableEventHandler {_this select 1 spawn WIS_fnc_SetState};
 
 // For debug purposes
 _pubvars = [WIS_CantMove,WIS_ShowTagged,WIS_Blackout,WIS_SetState];
@@ -26,5 +26,3 @@ _cnt = 1;
 	[format ["%3 select %2: %1", _x, (_cnt -1), _pubvars]] call WIS_fnc_Debug;
 	_cnt = _cnt + 1;
 } forEach _pubvars;
-
-			

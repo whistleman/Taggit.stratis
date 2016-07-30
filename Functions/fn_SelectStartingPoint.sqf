@@ -37,9 +37,9 @@ if (_alt && _shift) then {
 		WIS_mrk setMarkerSize [WIS_Taggit_AreaSize,WIS_Taggit_AreaSize];
 		WIS_mrk setMarkerAlpha 1;
 		publicVariable "WIS_mrk";
-		
+
 		// Set players to pos
-		{_x setposATL _pos} foreach allPlayers;
+		{_x setposATL _pos} foreach allUnits;
 	};
 
 	// Show a hint that the players have some time to run away
@@ -75,8 +75,10 @@ if (_alt && _shift) then {
 
 	// Start score loop
 	if (isServer) then {
-		[_x, 10] remoteExec ["WIS_fnc_ScoreLoop",2,true];
-	} forEach allPlayers;
+		{
+			[_x, 10] remoteExec ["WIS_fnc_ScoreLoop",2];
+		} forEach allUnits;
+	};
 
 } else {
 

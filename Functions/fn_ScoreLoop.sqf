@@ -23,8 +23,9 @@ while {alive _unit} do {
 		sleep 5;
 
 	} else {
-		
+
 		_tagged = _unit getVariable "Tagged";
+		[format ["Scoreloop getvariable Tagged: %1", _unit getVariable "Tagged"]] call WIS_fnc_Debug;
 
 		// Check if player is tagged. If tagged the player will not receive any points
 		if !(_tagged) then {
