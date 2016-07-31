@@ -5,7 +5,7 @@ Taggit mission for Arma 3
 IDEAS:
 
 Add more Special Abilities? Like:
-- random placebo plagers around area
+- Random place players around area
 
 - Players can run faster (Is it even possible)?
 
