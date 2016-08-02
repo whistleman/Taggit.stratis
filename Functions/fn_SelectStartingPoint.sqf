@@ -39,7 +39,14 @@ if (_shift) then {
 		publicVariable "WIS_mrk";
 
 		// Set players to pos
-		{_x setposATL _pos} foreach allUnits;
+		{
+			if (_tagged) then {
+				_x setposATL _pos;
+			} else {
+				_place = [ [_pos, WIS_Taggit_AreaSize] , ["water"], {} ] call BIS_fnc_randomPos;
+				_x setposATL _place;
+			};
+		} foreach allUnits;
 	};
 
 	// Show a hint that the players have some time to run away
