@@ -59,9 +59,9 @@ if (_shift) then {
 
         If (isServer) then {
 			// Add magazines of selected weapon
-			_box addMagazineCargoGlobal [_magazine, 999];
+			//_box addMagazineCargoGlobal [_magazine, 999];
 			// Add maps for everyone
-			_box addItemCargoGlobal ["itemmap", 10];
+			_box addItemCargoGlobal ["itemmap", 50];
 			WIS_box = _box;
 			publicVariable "WIS_box";
 

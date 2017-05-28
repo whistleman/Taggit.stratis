@@ -66,6 +66,6 @@ _init_tagged = player getvariable "Tagged";
 if (_init_tagged) then {
 
 	[format ["Init taggit succeeded: %1. The player who is tagged is: %2", _init_tagged, name player]] call WIS_fnc_debug;
-	player onMapSingleClick "[_this, [_pos,_units,_shift,_alt]] remoteExec ['WIS_fnc_SelectStartingPoint', 0, false]";
+	player onMapSingleClick {[_this, [_pos,_units,_shift,_alt]] remoteExec ['WIS_fnc_SelectStartingPoint', 0, false]};
 	//player onMapSingleClick "[[_this, [_pos,_units,_shift,_alt]], 'WIS_fnc_SelectStartingPoint', true, true, false] call BIS_fnc_MP;";
 };
