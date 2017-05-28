@@ -40,7 +40,7 @@ if (_shift) then {
 
 		// Set players to pos
 		{
-			if (_tagged) then {
+			if (_x == _tagged) then {
 				_x setposATL _pos;
 			} else {
 				_place = [ [_pos, WIS_Taggit_AreaSize] , ["water"], {} ] call BIS_fnc_randomPos;
@@ -89,6 +89,6 @@ if (_shift) then {
 
 } else {
 
-	[[player, "wrongclick", 0], "WIS_fnc_showHint", true, false] call BIS_fnc_MP;
+	[player, "wrongclick", 0] remoteExec ['WIS_fnc_showHint', _tagged, false]
 
 };

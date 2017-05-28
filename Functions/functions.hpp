@@ -9,6 +9,7 @@ class WIS
 		class SelectStartingPoint {file = "functions\fn_selectStartingPoint.sqf";};
 		class setState {file = "functions\fn_setState.sqf";};
 		class CreatePubVarEH {file = "functions\fn_CreatePubVarEH.sqf";};
+		class resetAmmo {file = "functions\fn_resetAmmo.sqf";};
 	};
 	class Abilities
 	{

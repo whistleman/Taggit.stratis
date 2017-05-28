@@ -16,6 +16,8 @@ class CfgDebriefing
 	};
 };
 
+#include "config\cfgNotifications"
+
 class Params
 {
 	class WIS_MaxScore

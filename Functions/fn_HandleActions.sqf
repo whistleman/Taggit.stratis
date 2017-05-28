@@ -14,6 +14,8 @@ _tagged = {
 	if (_var) exitwith {_x};
 } foreach AllUnits;
 
+if (WIS_Taggit_Debug == 0 && _call == _tagged) exitwith {};
+
 [format ["HandleActions Tagged: %1", name _tagged]] call Wis_fnc_debug;
 
 [_tagged] remoteExec [_fnc, _tagged];

@@ -15,7 +15,7 @@ WIS_Taggit_Vision	= _visionarray select ("WIS_Vision" call BIS_fnc_getParamvalue
 {
 	_ehPlayerHitNoDomage	= _x addEventhandler ["HandleDamage", {0}];
 	_ehPlayerHit 					= _x addEventhandler ["HandleDamage", {_this spawn WIS_fnc_Switch;}];
-	_ehPlayerFired				= _x addEventhandler ["Fired", {(_this select 0) setVehicleAmmo 1;}];
+	_ehPlayerFired				= _x addEventhandler ["Fired", {_this call WIS_fnc_resetAmmo;}];
 } foreach allunits;
 
 // Give unit a uniform (or not)
@@ -53,7 +53,8 @@ If (isServer) then {
 	_tagged linkItem "ItemMap";
 	[format ["%1 has a map? %2", name _tagged, ("itemMap" in assignedItems _tagged)]] call WIS_fnc_debug;
 
-	[[_tagged],"WIS_fnc_showHint", true, false] call BIS_fnc_MP;
+	[_tagged] remoteExec ["WIS_fnc_showHint", 0, false];
+	//[[_tagged],"WIS_fnc_showHint", true, false] call BIS_fnc_MP;
 
 	WIS_chosen_tagged = true;
 	publicVariable "WIS_chosen_tagged";
@@ -65,6 +66,6 @@ _init_tagged = player getvariable "Tagged";
 if (_init_tagged) then {
 
 	[format ["Init taggit succeeded: %1. The player who is tagged is: %2", _init_tagged, name player]] call WIS_fnc_debug;
-
-	player onMapSingleClick "[[_this, [_pos,_units,_shift,_alt]], 'WIS_fnc_SelectStartingPoint', true, true, false] call BIS_fnc_MP;";
+	player onMapSingleClick "[_this, [_pos,_units,_shift,_alt]] remoteExec ['WIS_fnc_SelectStartingPoint', 0, false]";
+	//player onMapSingleClick "[[_this, [_pos,_units,_shift,_alt]], 'WIS_fnc_SelectStartingPoint', true, true, false] call BIS_fnc_MP;";
 };
