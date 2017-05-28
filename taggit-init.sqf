@@ -32,7 +32,7 @@ If (isServer) then {
 	// Let the server randomly select the first Tagger
 	_justPlayers 		= call BIS_fnc_listPlayers;
 	_cntPlayableUnits 	= count _justPlayers;
-	_tagged 			= _justPlayers call BIS_fnc_selectRandom;
+	_tagged 			= selectRandom _justPlayers;
 
 	[format ["%1 players", _cntPlayableUnits]] call WIS_fnc_debug;
 	[format ["%1 is randomly selected.", name _tagged]] call WIS_fnc_debug;
