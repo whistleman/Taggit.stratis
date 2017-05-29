@@ -13,7 +13,7 @@ _points	 	= _this select 2;
 
 [format ["added setState array: %1", _this]] call WIS_fnc_Debug;
 
-if (typename _tagger != "STRING") then {
+if (typename _tagger != "STRING" && WIS_SwitchINIT) then {
 
 	_WasTagged = _tagger getVariable "Tagged";
 	[format ["%1 Tagged: %2 (first time should be true)", name _tagger, _WasTagged]] call WIS_fnc_Debug;
