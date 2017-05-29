@@ -16,7 +16,10 @@ class CfgDebriefing
 	};
 };
 
-#include "config\cfgNotifications.hpp"
+class CfgNotifications
+{
+	#include "config\cfgNotifications.hpp"
+};
 
 class Params
 {
