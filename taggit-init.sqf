@@ -32,17 +32,18 @@ If (isServer) then {
 	// Let the server randomly select the first Tagger
 	_justPlayers 		= call BIS_fnc_listPlayers;
 	_cntPlayableUnits 	= count _justPlayers;
-	_tagged 			= selectRandom _justPlayers;
+	_tagged 		= selectRandom _justPlayers;
 
 	[format ["%1 players", _cntPlayableUnits]] call WIS_fnc_debug;
 	[format ["%1 is randomly selected.", name _tagged]] call WIS_fnc_debug;
-
+	
+	_playersExcludingTagged = _justPlayers - [_tagged];
 	// Set all players except the first tagged player to "Untagged"
 	{
 		_x setVariable ["Untagged", true, true];
 		_x setVariable ["Tagged", false, true];
 		[format ["%1 is setvariable Untagged.", name _x]] call WIS_fnc_debug;
-	} foreach allUnits;
+	} foreach _playersExcludingTagged;
 
 	// Set the tagged player to "Tagged"
 	_tagged setVariable ["Untagged", false, true];
