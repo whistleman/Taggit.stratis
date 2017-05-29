@@ -35,10 +35,11 @@ if (typename _tagger != "STRING") then {
 	// Clear cargo to be sure
 	clearMagazineCargoGlobal _tagger;
 	clearWeaponCargoGlobal _tagger;
-	};
+};
 
 _WasUntagged = _tagged getvariable "Untagged";
 [format ["%1 Untagged: %2 (first time should be true)", name _tagged, _WasUntagged]] call WIS_fnc_Debug;
+
 if (_WasUntagged) then {
 	// Set variable untagged to false and tagged to true.
 	_tagged setVariable ["Untagged", false, true];
