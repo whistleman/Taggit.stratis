@@ -2,17 +2,19 @@ class WIS
 {
 	class Main
 	{
-		class Handle_score {file = "functions\fn_handle_score.sqf";};
-		class ScoreLoop {file = "functions\fn_Scoreloop.sqf";};
-		class Switch {file = "functions\fn_Switch.sqf";};
-		class showHint {file = "functions\fn_showHint.sqf";};
-		class SelectStartingPoint {file = "functions\fn_selectStartingPoint.sqf";};
-		class setState {file = "functions\fn_setState.sqf";};
-		class CreatePubVarEH {file = "functions\fn_CreatePubVarEH.sqf";};
-		class resetAmmo {file = "functions\fn_resetAmmo.sqf";};
+		file = "functions\main";
+		class Handle_score {file = "fn_handle_score.sqf";};
+		class ScoreLoop {file = "fn_Scoreloop.sqf";};
+		class Switch {file = "fn_Switch.sqf";};
+		class showHint {file = "fn_showHint.sqf";};
+		class SelectStartingPoint {file = "fn_selectStartingPoint.sqf";};
+		class setState {file = "fn_setState.sqf";};
+		class CreatePubVarEH {file = "fn_CreatePubVarEH.sqf";};
+		class resetAmmo {file = "fn_resetAmmo.sqf";};
 	};
 	class Abilities
 	{
+		file = "functions\abilities";
 		class Ability_CantMove {file = "functions\fn_Ability_CantMove.sqf";};
 		class Ability_ShowTagged {file = "functions\fn_Ability_ShowTagged.sqf";};
 		class Ability_Blackout {file = "functions\fn_Ability_Blackout.sqf";};
@@ -21,6 +23,7 @@ class WIS
 	};
 	class Debug
 	{
+		file = "functions\debug";
 		class Debug {file="functions\fn_Debug.sqf";};
 		class DebugServer {file="functions\fn_DebugServer.sqf";};
 	};
