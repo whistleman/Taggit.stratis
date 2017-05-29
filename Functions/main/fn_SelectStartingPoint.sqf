@@ -5,10 +5,10 @@ _mapclickparams = _this select 1;
 [format ["Array coming out of Mapclick %1", _this]] call WIS_fnc_Debug;
 [format ["Mapclickparams: %1", _mapclickparams]] call WIS_fnc_Debug;
 
-_pos   = _mapclickparams select 0;
+_pos   = _mapclickparams param [0, [0,0,0]];
 //_units = _mapclickparams select 1;
-_shift = _mapclickparams select 2;
-_alt   = _mapclickparams select 3;
+_shift = _mapclickparams param [2, false];
+_alt   = _mapclickparams param [3, false];
 
 if (_shift) then {
 	// Remove map
