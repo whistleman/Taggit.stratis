@@ -43,7 +43,7 @@ if (_shift) then {
 			if (_x == _tagged) then {
 				_x setposATL _pos;
 			} else {
-				_place = [ [_pos, WIS_Taggit_AreaSize] , ["water"], {} ] call BIS_fnc_randomPos;
+				_place = [[ [_pos, WIS_Taggit_AreaSize] ], ["water"]] call BIS_fnc_randomPos;
 				_x setposATL _place;
 			};
 		} foreach allUnits;
