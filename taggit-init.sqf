@@ -14,8 +14,8 @@ WIS_Taggit_Vision	= _visionarray select ("WIS_Vision" call BIS_fnc_getParamvalue
 
 {
 	_ehPlayerHitNoDomage	= _x addEventhandler ["HandleDamage", {0}];
-	_ehPlayerHit 					= _x addEventhandler ["HandleDamage", {_this spawn WIS_fnc_Switch;}];
-	_ehPlayerFired				= _x addEventhandler ["Fired", {_this call WIS_fnc_resetAmmo;}];
+	_ehPlayerHit 		= _x addEventhandler ["HandleDamage", {_this spawn WIS_fnc_Switch;}];
+	_ehPlayerFired		= _x addEventhandler ["Fired", {_this call WIS_fnc_resetAmmo;}];
 } foreach allunits;
 
 // Give unit a uniform (or not)
