@@ -19,8 +19,8 @@ _points = if (typename _tagger == "OBJECT") then {-50} else {50};
 
 _wasUnTagged = _tagged getVariable "Untagged"; // Should be True
 _wasTagged = _tagged getVariable "Tagged"; // Should be False
-_isUnTagged = _tagger getVariable "Untagged"; // Should be False
-_isTagged = _tagger getVariable "Tagged"; // Should be True
+_isUnTagged = if (typename _tagger == "OBJECT") then {_tagger getVariable "Untagged";} else {false}; // Should be False
+_isTagged = if (typename _tagger == "OBJECT") then {_tagger getVariable "Tagged";} else {true}; // Should be True
 
 // Verify 
 if (typename _tagger == "OBJECT") then {
