@@ -3,16 +3,16 @@ PRIVATE ["_tagged","_tagger","_damage","_points"];
 [format [" Switcharray: %1", _this]] call WIS_fnc_debug;
 
 _tagged  = _this select 0;
+_selection = _this select 1;
 
 //first time _tagger == "init"!!!
 _tagger  = _this select 3;
 
-_tagged setdamage 0;
-
 // Check if WIS_SwitchINIT variable exists, if it does not make it false.
 if (isNil "WIS_SwitchINIT") then {WIS_SwitchINIT = false; publicVariable "WIS_SwitchINIT";};
 
-if (WIS_SwitchINIT) exitwith {};
+if (WIS_SwitchINIT) exitwith {0};
+if (_selection != "") exitwith {0};
 
 // Give points
 _points = if (typename _tagger == "OBJECT") then {-50} else {50};
@@ -35,3 +35,5 @@ publicVariable "WIS_SwitchINIT";
 
 WIS_SetState = [_tagged, _tagger, _points];
 publicVariableServer "WIS_SetState";
+
+0
